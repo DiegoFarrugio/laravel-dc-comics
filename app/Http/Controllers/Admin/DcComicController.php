@@ -40,9 +40,8 @@ class DcComicController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(DcComic $dcComic)
     {
-        $dcComic = DcComic::find($id);
         return view('dcComics.show', compact('dcComic')); 
     }
 
