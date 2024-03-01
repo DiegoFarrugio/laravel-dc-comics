@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+//Controllers
+use App\Http\Controllers\Admin\DcComicController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,5 +52,11 @@ Route::get('/', function () {
 Route::get('/chi-siamo', function () {
     return view('subpages.about');
 });
+
+//Route::get('/comics', [ComicController::class, 'index'])->name('comics.index');
+//Route::get('/comics/{id}', [ComicController::class, 'show'])->name('comics.show'); 
+
+
+Route::resource('dcComics', DcComicController::class);
 
 // Route::get(PERCORSO CON CUI ARRIVARE ALLA PAGINA, FUNZIONE DI CALLBACK CHE MI CREA LA RISPOSTA DA DARE ALL UTENTE)
