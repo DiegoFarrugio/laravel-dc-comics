@@ -63,17 +63,30 @@ class DcComicController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(DcComic $dcComic)
     {
-        //
+        return view('dcComics.edit', compact('dcComic'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, DcComic $dcComic)
     {
-        //
+        $dcComicsData = $request->all();
+
+        $dcComic->title = $dcComicsData['title'];
+        $dcComic->description = $dcComicsData['description'];
+        $dcComic->thumb = $dcComicsData['thumb'];
+        $dcComic->price = $dcComicsData['price'];
+        $dcComic->series = $dcComicsData['series'];
+        $dcComic->sale_date = $dcComicsData['sale_date'];
+        $dcComic->type = $dcComicsData['type'];
+
+        //salvo
+        $dcComic->save();
+
+        return redirect()->route('dcComics.show',['dcComic' => $dcComic->id]);
     }
 
     /**

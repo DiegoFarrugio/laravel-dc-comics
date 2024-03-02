@@ -40,6 +40,9 @@
             <a href="{{ route('dcComics.show', ['dcComic' => $comic->id]) }}" class="btn btn-primary">
               Show
             </a>
+            <a href="{{ route('dcComics.edit', ['dcComic' => $comic->id]) }}" class="btn btn-secondary">
+              Modifica
+            </a>
             </td>
           </tr>
         @endforeach
