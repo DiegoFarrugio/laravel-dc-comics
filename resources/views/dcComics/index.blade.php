@@ -7,15 +7,14 @@
     Dc Comics Index
 </h1>
 
-<div class="row">
+<div class="row mt-3 ">
   <div class="col">
     <div>
-      <a href="{{ route('dcComics.create')}}" class="btn btn-primary">
+      <a href="{{ route('dcComics.create')}}" class="btn btn-primary w-100 ">
       Aggiungi
     </a>
     </div>
-    <table class="table">
-
+    <table class="table mt-3 ">
       <thead>
         <tr>
           <th scope="col">#</th>

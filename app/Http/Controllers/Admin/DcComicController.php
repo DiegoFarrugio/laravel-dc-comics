@@ -26,7 +26,7 @@ class DcComicController extends Controller
      */
     public function create()
     {
-        //
+        return view ('dcComics.create');
     }
 
     /**
@@ -34,7 +34,22 @@ class DcComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+    $dcComicsData = $request->all();
+
+        $dcComic = new DcComic();
+        $dcComic->title = $dcComicsData['title'];
+        $dcComic->description = $dcComicsData['description'];
+        $dcComic->thumb = $dcComicsData['thumb'];
+        $dcComic->price = $dcComicsData['price'];
+        $dcComic->series = $dcComicsData['series'];
+        $dcComic->sale_date = $dcComicsData['sale_date'];
+        $dcComic->type = $dcComicsData['type'];
+
+        //salvo
+        $dcComic->save();
+
+        return redirect()->route('dcComics.show',['dcComic' => $dcComic->id]);
     }
 
     /**

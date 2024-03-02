@@ -9,6 +9,11 @@
 
 <div class="row">
   <div class="col">
+    <div>
+      <a href="{{route('dcComics.index')}}" class="btn btn-primary ">
+      Torna all'index
+    </a>
+    </div>
     <div class="card">
       <img src="{{$dcComic->thumb}}" alt="">
       <div class="card-body">
@@ -17,7 +22,7 @@
             Descrizione: {{$dcComic->description}}
           </li>
           <li>
-            Prezzo: {{$dcComic->price}}
+            Prezzo: € {{$dcComic->price}}
           </li>
           <li>
             Serie: {{$dcComic->series}}
