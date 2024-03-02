@@ -92,8 +92,10 @@ class DcComicController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(DcComic $dcComic)
     {
-        //
+        $dcComic->delete();
+
+        return redirect()->route('dcComics.index');
     }
 }
