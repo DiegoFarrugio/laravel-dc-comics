@@ -46,6 +46,7 @@
             </a>
 
             <form 
+              onsubmit="return confirm('Sei sicuro di voler eliminare?');"
               class="d-inline-block" 
               action="{{ route('dcComics.destroy', ['dcComic' => $comic->id]) }}" 
               method="POST">
