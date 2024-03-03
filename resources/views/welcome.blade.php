@@ -3,11 +3,14 @@
 @section('page-title', 'Home')
 
 @section('main-content')
-<h1>
-    Laravel Start 1
+<h1 class="text-center">
+    Comic 
 </h1>
 
-<h2>
-    Ciao {{ $firstName }} {{ $lastName }}
-</h2>
+<div class="text-center">
+    <a href="{{route('dcComics.index')}}" class="btn btn-primary">
+        Vai ai Comics
+      </a>
+</div>
+
 @endsection

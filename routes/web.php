@@ -17,8 +17,7 @@ use App\Http\Controllers\Admin\DcComicController;
 */
 
 Route::get('/', function () {
-    $firstName = 'Gino';
-    $lastName = 'Paoli';
+   
 
     /*
         compact: crea un array associativo le cui chiavi sono le stringhe
@@ -42,10 +41,7 @@ Route::get('/', function () {
     */
     // dd(compact('firstName', 'lastName'));
 
-    return view('welcome', [
-        'firstName' => $firstName,
-        'lastName' => $lastName,
-    ]);
+    return view('welcome');
     // return view('welcome', compact('firstName', 'lastName'));
 });
 
