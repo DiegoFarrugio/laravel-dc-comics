@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+
 //Model
 use App\Models\DcComic;
 
@@ -35,19 +36,34 @@ class DcComicController extends Controller
     public function store(Request $request)
     {
 
-    $dcComicsData = $request->all();
+    $validationData = $request->validate([
+        'title' => 'required|max:64',
+        'description' => 'max:4098',
+        'thumb' => 'required|max:1024|url',
+        'price' => 'required',
+        'series' => 'nullable|max:64',
+        'sale_date' => 'nullable',
+        'type' => 'nullable|max:64',
+    ], [
+        'title.required' => 'Titolo non corretto',
+        'title.max' => 'I titolo può avere massimo 64 caratteri',
+        'thumb.url' => 'Inserisci URL',
+    ]);
 
-        $dcComic = new DcComic();
-        $dcComic->title = $dcComicsData['title'];
-        $dcComic->description = $dcComicsData['description'];
-        $dcComic->thumb = $dcComicsData['thumb'];
-        $dcComic->price = $dcComicsData['price'];
-        $dcComic->series = $dcComicsData['series'];
-        $dcComic->sale_date = $dcComicsData['sale_date'];
-        $dcComic->type = $dcComicsData['type'];
+
+    $dcComic = DcComic::create($validationData);
+
+        //$dcComic = new DcComic();
+        //$dcComic->title = $dcComicsData['title'];
+        //$dcComic->description = $dcComicsData['description'];
+        //$dcComic->thumb = $dcComicsData['thumb'];
+        //$dcComic->price = $dcComicsData['price'];
+        //$dcComic->series = $dcComicsData['series'];
+        //$dcComic->sale_date = $dcComicsData['sale_date'];
+        //$dcComic->type = $dcComicsData['type'];
 
         //salvo
-        $dcComic->save();
+        //$dcComic->save();
 
         return redirect()->route('dcComics.show',['dcComic' => $dcComic->id]);
     }
@@ -56,6 +72,7 @@ class DcComicController extends Controller
      * Display the specified resource.
      */
     public function show(DcComic $dcComic)
+
     {
         return view('dcComics.show', compact('dcComic')); 
     }
